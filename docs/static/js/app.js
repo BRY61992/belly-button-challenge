@@ -22,6 +22,7 @@ function buildMetadata(sample) {
     Object.entries(result).forEach(([key, value]) => {
         panel.append("h6").text(`${key.toUpperCase()}: ${value}`);
         });
+    });
 }
 
 // function to build both charts
@@ -29,16 +30,16 @@ function buildCharts(sample) {
   d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json").then((data) => {
 
     // Get the samples field
-let samples = data.samples;
+    let samples = data.samples;
       
     // Filter the samples for the object with the desired sample number
-   let resultArray = samples.filter(sampleObj => sampleObj.id == sample);
-        let result = resultArray[0];
+    let resultArray = samples.filter(sampleObj => sampleObj.id == sample);
+    let result = resultArray[0];
 
     // Get the otu_ids, otu_labels, and sample_values
- let otu_ids = result.otu_ids;
-        let otu_labels = result.otu_labels;
-        let sample_values = result.sample_values;
+    let otu_ids = result.otu_ids;
+    let otu_labels = result.otu_labels;
+    let sample_values = result.sample_values;
 
 
     // Build a Bubble Chart
@@ -102,17 +103,17 @@ function init() {
 
     // Use the list of sample names to populate the select options. Hint: Inside a loop, you will need to use d3 to append a new option for each sample name.
     names.forEach((name) => {
-                dropdown.append("option")
-                    .text(name)
-                    .property("value", name);
-            });
+        dropdown.append("option")
+            .text(name)
+            .property("value", name);
+    });
 
     // Get the first sample from the list
-    let firstSample = names[0];
+      let firstSample = names[0];
 
     // Build charts and metadata panel with the first sample
-    buildCharts(firstSample);
-    buildMetadata(firstSample);
+      buildCharts(firstSample);
+      buildMetadata(firstSample);
   });
 }
 
